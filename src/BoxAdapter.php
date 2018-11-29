@@ -232,9 +232,7 @@ class BoxAdapter extends AbstractAdapter
             $limit = ($count - $offset < 1000) ? $count - $offset : 1000;
         } while ($offset != $count && $count > 0);
 
-        return array_map(function ($entry) {
-            $path = $this->removePathPrefix($entry['name']);
-
+        return array_map(function ($entry) use ($path) {
             return $this->normalizeResponse($entry, $path);
         }, $items);
     }
@@ -329,9 +327,9 @@ class BoxAdapter extends AbstractAdapter
         return $arr;
     }
 
-    protected function normalizeResponse(array $response): array
+    protected function normalizeResponse(array $response, string $path): array
     {
-        $normalizedPath = ltrim($this->removePathPrefix($response['name']), '/');
+        $normalizedPath = ltrim($path . '/' . ($response['name'] ?? '') , '/');
 
         $normalizedResponse = ['path' => $normalizedPath];
 
