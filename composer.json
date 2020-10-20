@@ -1,11 +1,17 @@
 {
-    "name": "ryanvade/flysystem-box",
+    "name": "airslate/flysystem-box",
     "description": "A Box.com Adapter for flysystem",
     "require": {
         "php": "^7.0",
         "league/flysystem": "^1.0",
-        "ryanvade/laravel-box": "*@dev"
+        "airslate/laravel-box": "dev-AAD-2024-laravel-box"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:airslateinc/laravel-box.git"
+        }
+    ],
     "license": "Mit",
     "authors": [
         {
@@ -14,8 +20,8 @@
         }
     ],
     "autoload": {
-      "psr-4": {
-        "FlysystemBox\\": "src/"
+        "psr-4": {
+            "FlysystemBox\\": "src/"
       }
     }
 }
