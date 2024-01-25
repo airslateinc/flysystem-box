@@ -1,0 +1,45 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    registries:
+      - github
+    groups:
+      actions:
+        patterns:
+          - "*"
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    registries:
+      - artifactory-composer
+    versioning-strategy: increase
+    target-branch: "master"
+    open-pull-requests-limit: 10
+    groups:
+      internal-deps:
+        patterns:
+          - "airslate/*"
+      external-deps:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+        exclude-patterns:
+          - "airslate/*"
+
+registries:
+  github:
+    type: git
+    url: https://github.com
+    username: x-access-token
+    password: ${{ secrets.APP_GITHUB_TOKEN }} # dependabot secret
+  artifactory-composer:
+    type: composer-repository
+    url: https://artifactory.infrateam.xyz/artifactory/api/composer/composer-local
+    username: ${{ secrets.COMPOSER_USER }}
+    password: ${{ secrets.COMPOSER_TOKEN }}
