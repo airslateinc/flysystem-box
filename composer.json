@@ -2,7 +2,7 @@
   "name": "ryanvade/flysystem-box",
   "description": "A Box.com Adapter for flysystem",
   "require": {
-    "php": "^7.0",
+    "php": "^8.0",
     "league/flysystem": "^1.0",
     "ryanvade/laravel-box": "*@dev"
   },
@@ -17,6 +17,12 @@
     "psr-4": {
       "FlysystemBox\\": "src/"
     }
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.9",
+    "phpmd/phpmd": "^2.15",
+    "phpstan/phpstan": "^1.10",
+    "vimeo/psalm": "^5.22",
+    "phpunit/phpunit": "^9.6"
   }
 }
-

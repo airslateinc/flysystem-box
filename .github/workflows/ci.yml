@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  run:
+    name: Run unit-tests & linter
+    uses: airslateinc/php-lib-tests-ci/.github/workflows/workflow.yml@v1
+    with:
+      matrix-php-versions: "['8.0', '8.1', '8.2']"
+      phpmd-enabled: false
+      phpstan-enabled: false
+      psalm-enabled: false
+      has-unit-tests: false
+    secrets:
+      composer-token: ${{ secrets.COMPOSER_TOKEN }}
