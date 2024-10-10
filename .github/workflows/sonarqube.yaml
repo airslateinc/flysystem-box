@@ -1,0 +1,20 @@
+name: Sonarqube
+
+on:
+  push:
+    branches:
+      - master
+      - 'release**'
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  test:
+    uses: airslateinc/shared-workflows/.github/workflows/shared-libs-sonar.yml@v2.2.4
+    with:
+      php-extensions: yaml
+    secrets:
+      github-token: ${{ secrets.APP_GITHUB_TOKEN }}
+      composer-token: ${{ secrets.COMPOSER_TOKEN }}
+      sonar-secret: ${{ secrets.SONAR_SECRET }}
+      sonar-host-url: ${{ secrets.SONAR_HOST_URL }}
