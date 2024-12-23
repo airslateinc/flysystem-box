@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  annotations:
+    github.com/project-slug: airslateinc/flysystem-box
+    sonarqube.org/project-key: airslateinc_flysystem-box
+    backstage.io/adr-location: docs/adrs
+    backstage.io/source-location: url:https://github.com/airslateinc/flysystem-box/tree/master/
+  name: flysystem-box
+  tags:
+    - backend
+spec:
+  type: shared-library
+  lifecycle: production
+  owner: airslate-creators
+  system: airslate-workflow
